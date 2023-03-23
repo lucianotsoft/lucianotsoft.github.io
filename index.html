@@ -2,6 +2,16 @@
 <html>
   <head>
     <meta charset="UTF-8">
+	 <title>Contador de tiempo</title>
+	 <style>
+	 body {
+	 background-color: rgba(23, 2, 63, 0.945);
+	 }
+	 #countdown {
+	 font-size: 36px; 
+	 color: white;
+	 }
+   </style>
   </head>
   <body>
     <p id="countdown"></p>
@@ -30,7 +40,7 @@
 
           // Si la cuenta regresiva ha terminado, mostrar "00:00", detener la actualización del contador
           // y comenzar de nuevo
-          if (distance < 0) {
+          if (distance < 0) { 	
             clearInterval(x);
             document.getElementById("countdown").innerHTML = "00:00";
             setTimeout(startCountdown, 1000);
@@ -41,5 +51,6 @@
       // Iniciar la cuenta regresiva al cargar la página
       startCountdown();
     </script>
+
   </body>
 </html>
