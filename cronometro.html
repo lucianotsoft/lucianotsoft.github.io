@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+	 <title>Contador de tiempo</title>
+	 <style>
+	 body {
+	 background-color: rgba(1, 28, 49, 0.945);
+	 }
+	 #countdown {
+	 font-size: 20px; 
+	 color: white;
+	 }
+   </style>
+  </head>
+  <body>
+    <p id="countdown"></p>
+
+    <script>
+      function startCountdown() {
+        // Establecer la fecha y hora de finalización
+        var countDownDate = new Date().getTime() + (2 * 60 * 1000); // 2 minutos
+
+        // Actualizar el contador cada segundo
+        var x = setInterval(function() {
+
+          // Obtener la fecha y hora actual
+          var now = new Date().getTime();
+
+          // Calcular la distancia entre la fecha y hora de finalización y la fecha y hora actual
+          var distance = countDownDate - now;
+
+          // Calcular minutos y segundos restantes y formatearlos en el formato mm:ss
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          var formattedTime = ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2);
+
+          // Mostrar el contador en el elemento con ID "countdown"
+          document.getElementById("countdown").innerHTML = formattedTime;
+
+          // Si la cuenta regresiva ha terminado, mostrar "00:00", detener la actualización del contador
+          // y comenzar de nuevo
+          if (distance < 0) { 	
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "00:00";
+            setTimeout(startCountdown, 1000);
+          }
+        }, 1000); // Actualizar el contador cada segundo (1000ms)
+      }
+
+      // Iniciar la cuenta regresiva al cargar la página
+      startCountdown();
+    </script>
+
+  </body>
+</html>
